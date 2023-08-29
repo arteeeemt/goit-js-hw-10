@@ -1,38 +1,44 @@
 import axios from "axios";
+import fetchBreeds from './cat-api.js';
+
+
+ const errorBlock = document.querySelector('.error')
+ const selectInput = document.querySelector('.breed-select')
+const infoBlock = document.querySelector('.cat-info')
+const loader = document.querySelector('.loader')
+export default errorBlock 
+
 
 axios.defaults.headers.common["x-api-key"] = "live_mkhQr4FHRFIVHQ0bJWYHd7zmtXfCmBCtCCScuFaYI5iKQOlZDc4EZSmh3QL2YcXJ"
 
-const selectInput = document.querySelector('.breed-select')
-const infoBlock = document.querySelector('.cat-info')
-const loader = document.querySelector('.loader')
-const errorBlock = document.querySelector('.error')
 
 
 loader.style.display = 'none'
 errorBlock.style.display = 'none'
-function fetchBreeds(){
-    const BASE_URL = 'https://api.thecatapi.com/v1/breeds'
-    return fetch(BASE_URL)
-    .then((response) => {
-        if(!response.ok){
-            throw new Error
-        }
-      return response.json();
-    })
-    .then((data) => {
-      data.map((cat)=>{
-        const option = document.createElement('option')
-        option.value = cat.id;
-        option.textContent = cat.name;
-       selectInput.appendChild(option);
+
+// function fetchBreeds(){
+//     const BASE_URL = 'https://api.thecatapi.com/v1/breeds'
+//     return fetch(BASE_URL)
+//     .then((response) => {
+//         if(!response.ok){
+//             throw new Error
+//         }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       data.map((cat)=>{
+//         const option = document.createElement('option')
+//         option.value = cat.id;
+//         option.textContent = cat.name;
+//        selectInput.appendChild(option);
        
-      })
-    })
-    .catch(error => {
-        errorBlock.style.display = 'inline'
+//       })
+//     })
+//     .catch(error => {
+//         errorBlock.style.display = 'inline'
         
-    })
-}
+//     })
+// }
 
 fetchBreeds()
 
