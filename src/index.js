@@ -87,7 +87,7 @@ export function createMarkup(data){
     const { name, description, temperament } = data[0].breeds[0]
     infoBlock.innerHTML = `<img class=cat-img src="${url}" alt="Картинка">
     <div><h1 class=header-title>${name}</h1>
-    <p class=desc>${description}</p>
+    <p class=desc>${description} </p>
     <p class=temperament-desc>Temperament:${temperament}</p></div>`
 
 }
